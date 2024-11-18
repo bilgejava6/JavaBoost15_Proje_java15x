@@ -2,6 +2,7 @@ import React from 'react'
 import LeftMenuComponent from '../component/molecules/LeftMenuComponent'
 import './HomePage.css'
 import SearchInput from '../component/atoms/SearchInput'
+import FollowSuggestionList from '../component/molecules/FollowSuggestionList'
 function HomePage() {
   return (
     <div className="container">
@@ -17,10 +18,10 @@ function HomePage() {
               <SearchInput />
           </div>
           <div className="row rounded-3 m-2 x-rigth-section">
-
+              <FollowSuggestionList />
           </div>
           <div className="row rounded-3 m-2 x-rigth-section">
-          
+
           </div>            
         </div>
       </div>
