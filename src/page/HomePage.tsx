@@ -3,6 +3,7 @@ import LeftMenuComponent from '../component/molecules/LeftMenuComponent'
 import './HomePage.css'
 import SearchInput from '../component/atoms/SearchInput'
 import FollowSuggestionList from '../component/molecules/FollowSuggestionList'
+import TrendList from '../component/molecules/TrendList'
 function HomePage() {
   return (
     <div className="container">
@@ -21,7 +22,7 @@ function HomePage() {
               <FollowSuggestionList />
           </div>
           <div className="row rounded-3 m-2 x-rigth-section">
-
+              <TrendList />
           </div>            
         </div>
       </div>
