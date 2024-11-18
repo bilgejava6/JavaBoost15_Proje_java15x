@@ -1,6 +1,7 @@
 import React from 'react'
 import LeftMenuComponent from '../component/molecules/LeftMenuComponent'
 import './HomePage.css'
+import SearchInput from '../component/atoms/SearchInput'
 function HomePage() {
   return (
     <div className="container">
@@ -12,7 +13,15 @@ function HomePage() {
 
         </div>
         <div className="col-4">
+          <div className="row mt-3">
+              <SearchInput />
+          </div>
+          <div className="row rounded-3 m-2 x-rigth-section">
 
+          </div>
+          <div className="row rounded-3 m-2 x-rigth-section">
+          
+          </div>            
         </div>
       </div>
     </div>
