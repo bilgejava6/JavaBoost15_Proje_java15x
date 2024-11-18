@@ -1,6 +1,6 @@
 import React from 'react'
 import LeftMenuComponent from '../component/molecules/LeftMenuComponent'
-
+import './HomePage.css'
 function HomePage() {
   return (
     <div className="container">

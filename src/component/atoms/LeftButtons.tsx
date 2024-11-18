@@ -28,7 +28,7 @@ function LeftButtons(props: ILeftButtonsProps) {
         navigate(path);
     }
     const getStyleName = ()=>{
-       return isActive ?  {fontWeight: 'bold'} :  {}
+       return isActive ?  {fontWeight: 'bold', color: 'white'} :  {color: 'white'}
     } 
   return (
     <div onClick={goToPath} className='row x-btn-hover align-items-center'>
