@@ -4,6 +4,8 @@ import './HomePage.css'
 import SearchInput from '../component/atoms/SearchInput'
 import FollowSuggestionList from '../component/molecules/FollowSuggestionList'
 import TrendList from '../component/molecules/TrendList'
+import NewPost from '../component/molecules/SharePost'
+import PostList from '../component/organisms/PostList'
 function HomePage() {
   return (
     <div className="container">
@@ -12,7 +14,12 @@ function HomePage() {
            <LeftMenuComponent />
         </div>
         <div className="col-5 border-start border-end">
-
+            <div className="row">
+                <NewPost />
+            </div>
+            <div className="row">
+                <PostList />
+            </div>
         </div>
         <div className="col-4">
           <div className="row mt-3">
