@@ -3,34 +3,56 @@ import './Post.css'
 import UserAvatar from '../atoms/UserAvatar'
 import PostTitle from '../atoms/PostTitle'
 import PostIcons from '../atoms/PostIcons'
-function Post() {
+interface IPostProps{
+    userAvatar: string,
+    userName: string,
+    name: string,
+    isPremium: boolean,
+    sharedTime: number,
+    userId: string,
+    comment: string,
+    postImageUrl: string,
+    postId: string,
+    commentCount: number,
+    reteweetCount: number,
+    likeCount: number,
+    viewsCount: number
+}
+function Post(props: IPostProps) {
+    const {
+        userAvatar,userName,name,isPremium,sharedTime,
+        userId,comment,postImageUrl,postId,commentCount,reteweetCount,
+        likeCount,viewsCount
+    } = props;
   return (
     <div className="row x-post-body">
         <div className="col-2 text-end">
-            <UserAvatar userAvatarUrl='https://picsum.photos/100/100'/>
+            <UserAvatar userAvatarUrl={userAvatar}/>
         </div>
         <div className="col-10">
             <div className="row">
-                <PostTitle userName='muhammed' name='MHMMT' sharedTime={15} isPremium={true} />
+                <PostTitle userName={userName} name={name} sharedTime={sharedTime} isPremium={isPremium} />
             </div>
             <div className="row">
-                <label className='x-post-comment'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus labore ea incidunt reprehenderit? Fugit, at? Nam, ducimus ullam aliquid, placeat repudiandae provident nostrum cumque incidunt atque consequuntur iure enim.</label>
+                <label className='x-post-comment'>
+                    {comment}
+                </label>
             </div>
             <div className="row">
-                <img className='x-post-image' src="https://picsum.photos/200/200" />
+                <img className='x-post-image' src={postImageUrl} />
             </div>
             <div className="row">
                     <div className="col-3">
-                        <PostIcons postId='1' type='Comment' count={12}/>
+                        <PostIcons postId={postId} type='Comment' count={commentCount}/>
                     </div>
                     <div className="col-3">
-                    <PostIcons postId='1' type='Retweet' count={12}/>
+                        <PostIcons postId={postId} type='Retweet' count={reteweetCount}/>
                     </div>
                     <div className="col-3">
-                    <PostIcons postId='1' type='Like' count={12}/>
+                        <PostIcons postId={postId} type='Like' count={likeCount}/>
                     </div>
                     <div className="col-3">
-                    <PostIcons postId='1' type='Views' count={12}/>
+                        <PostIcons postId={postId} type='Views' count={viewsCount}/>
                     </div>
             </div>
         </div>
@@ -38,4 +60,4 @@ function Post() {
   )
 }
 
-export default Post
+export default React.memo(Post)
