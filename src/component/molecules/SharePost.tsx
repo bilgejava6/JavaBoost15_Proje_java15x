@@ -1,11 +1,12 @@
 import React from 'react'
 import './SharePost.css'
+import UserAvatar from '../atoms/UserAvatar'
 function NewPost() {
   return (
     <div>
       <div className="row border mt-5 p-2">
         <div className="col-2 text-center mt-1">
-          <img className='x-new-post-avatar' src="https://picsum.photos/100/100" alt="" />
+          <UserAvatar userAvatarUrl='https://picsum.photos/100/100'/>
         </div>
         <div className="col-10">
           <div className="row">
@@ -15,14 +16,14 @@ function NewPost() {
             <hr className='x-new-post-bottom-line'/>
           </div>
           <div className="row">
-              <div className="col-8">
-                <i className="fa-regular fa-image" style={{color: '#1da1f2'}}></i>
-                <i className="fa-solid fa-list-ul" style={{color: '#1da1f2'}}></i>
-                <i className="fa-regular fa-face-smile"  style={{color: '#1da1f2'}}></i>
-                <i className="fa-regular fa-clock"  style={{color: '#1da1f2'}}></i>
-                <i className="fa-solid fa-location-dot"  style={{color: '#1da1f2'}}></i>
-                <i className="fa-solid fa-bold"  style={{color: '#1da1f2'}}></i>
-                <i className="fa-solid fa-italic"  style={{color: '#1da1f2'}}></i>
+              <div className="col-8 align-items-center">
+                <i className="fa-regular fa-image fa-xs x-new-post-icons" style={{color: '#1da1f2'}}></i>
+                <i className="fa-solid fa-list-ul fa-xs x-new-post-icons" style={{color: '#1da1f2'}}></i>
+                <i className="fa-regular fa-face-smile fa-xs  x-new-post-icons"  style={{color: '#1da1f2'}}></i>
+                <i className="fa-regular fa-clock fa-xs x-new-post-icons"  style={{color: '#1da1f2'}}></i>
+                <i className="fa-solid fa-location-dot fa-xs x-new-post-icons"  style={{color: '#1da1f2'}}></i>
+                <i className="fa-solid fa-bold fa-xs x-new-post-icons"  style={{color: '#1da1f2'}}></i>
+                <i className="fa-solid fa-italic fa-xs x-new-post-icons"  style={{color: '#1da1f2'}}></i>
               </div>
               <div className="col-4 text-end">
                   <input type="button" value="Gönder" className='x-new-post-btn-send' />

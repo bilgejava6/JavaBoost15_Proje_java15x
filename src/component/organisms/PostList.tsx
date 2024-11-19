@@ -1,8 +1,11 @@
 import React from 'react'
+import Post from '../molecules/Post'
 
 function PostList() {
   return (
-    <div>PostList</div>
+    <div className="col">
+        <Post />
+    </div>
   )
 }
 
