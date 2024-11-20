@@ -1,8 +1,8 @@
+
 import { configureStore } from "@reduxjs/toolkit";
 
 import {
-    authSlice,
-    userSlice
+    authSlice, userSlice
 } from './feature'
 import { useSelector } from "react-redux";
 

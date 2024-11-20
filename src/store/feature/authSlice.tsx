@@ -1,5 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import apis from "../../config/RestApis";
+import { IRegisterRequest } from "../../models/IRegisterRequest";
+import { ILoginRequest } from "../../models/ILoginRequest";
+import { IBaseResponse } from "../../models/IBaseResponse";
+import swal from "sweetalert";
 const initialAuthState = {
     isAuth: false, // login oldu mu?
     isLoginLoading: false,
@@ -8,12 +12,54 @@ const initialAuthState = {
 }
 
 // fetch işlemleri
+export const fetchRegister = createAsyncThunk(
+    'auth/fetchRegister',
+   async (payload: IRegisterRequest)=>{
+        const response = await fetch(
+            apis.authService+'/register',{
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(data=>data.json())
+        return response;
+   }
+)
+export const fetchLogin = createAsyncThunk(
+    'auth/fetchLogin',
+    async(payload: ILoginRequest)=>{
+        const response = await fetch(
+            apis.authService+'/dologin',{
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(data=>data.json())
+        return response;
+    }
+)
 
 const authSlice = createSlice({
     name: 'auth',
     initialState: initialAuthState,
     reducers: {},
-    extraReducers: (build)=>{}
+    extraReducers: (build)=>{
+        build.addCase(fetchLogin.pending,(state)=>{
+            state.isLoginLoading = true;
+        })
+        build.addCase(fetchLogin.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
+            state.isLoginLoading = false;
+            if(action.payload.code === 200){
+                localStorage.setItem('token', action.payload.data);
+                state.isAuth = true;
+            } else{
+                swal('Hata!', action.payload.message, 'error');
+            }
+        })
+        
+    }
 })
 
 export default authSlice.reducer;

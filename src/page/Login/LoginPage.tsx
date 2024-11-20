@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import './LoginPage.css'
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { XDispatch } from '../../store';
+import { fetchLogin } from '../../store/feature/authSlice';
 function Login() {
-    
+    const dispatch = useDispatch<XDispatch>();
     const [userName,setUserName]= useState('');
     const [password, setPassword] = useState('');
     const [isEmpty,setIsEmpty] = useState(false);
@@ -19,26 +22,7 @@ function Login() {
         else
             setIsEmpty(false);
         
-        // get işleminde sadece url yeterli iken, sunucuya veri iletilecek işlemlerde
-        // put, delete, post işlemlerinde fetch için diğer parametreler eklenmelidir.
-        fetch('http://localhost:9090/v1/dev/user/dologin',{
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'userName': userName,
-                'password': password
-            })
-        }).then(data=>data.json()).then(res=>{
-            console.log(res);
-            sessionStorage.setItem('accessToken', res.data);
-            if(res.code === 200){
-                swal('Giriş Başarılı');
-            }else{
-                swal(res.message);
-            }
-        })
+       dispatch(fetchLogin({userName,password}));
         
     }
   return (
