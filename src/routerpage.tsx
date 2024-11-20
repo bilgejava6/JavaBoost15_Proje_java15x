@@ -7,7 +7,11 @@ import Login from './page/Login/LoginPage'
 import Register from './page/Register/RegisterPage'
 function RouterPage() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+    future={{
+      v7_relativeSplatPath: true,
+    }}
+    >
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<Login />} />

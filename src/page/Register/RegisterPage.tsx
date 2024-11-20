@@ -23,7 +23,7 @@ function Register() {
   return (
     <div className="contanier">
         <div className="row mt-4">
-            <div className="col-3"></div>
+            <div className="col-4"></div>
             <div className="col-4">
                 <h1 className='text-center mb-3 text-success'>Register Form</h1>
                 <div className="mb-3">
@@ -58,7 +58,7 @@ function Register() {
                 </div>                
                 
             </div>
-            <div className="col-5"></div>
+            <div className="col-4"></div>
         </div>
     </div>
   )

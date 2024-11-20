@@ -3,7 +3,7 @@ import swal from 'sweetalert';
 import './LoginPage.css'
 import { NavLink } from 'react-router-dom';
 function Login() {
-
+    
     const [userName,setUserName]= useState('');
     const [password, setPassword] = useState('');
     const [isEmpty,setIsEmpty] = useState(false);
