@@ -58,7 +58,17 @@ const authSlice = createSlice({
                 swal('Hata!', action.payload.message, 'error');
             }
         })
-        
+        build.addCase(fetchRegister.pending,(state)=>{
+            state.isRegisterLoding = true
+        })
+        build.addCase(fetchRegister.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
+            state.isRegisterLoding = false
+            if(action.payload.code === 200){
+                swal('Başarılı', 'Üyelik işlemi başarı ile tamamlanmıştır', 'success');
+            }else{
+                swal('Hata!', action.payload.message, 'error');
+            }
+        })
     }
 })
 

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
 import './LoginPage.css'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { XDispatch } from '../../store';
 import { fetchLogin } from '../../store/feature/authSlice';
 function Login() {
     const dispatch = useDispatch<XDispatch>();
+    const navigate = useNavigate();
     const [userName,setUserName]= useState('');
     const [password, setPassword] = useState('');
     const [isEmpty,setIsEmpty] = useState(false);
@@ -22,7 +23,10 @@ function Login() {
         else
             setIsEmpty(false);
         
-       dispatch(fetchLogin({userName,password}));
+       dispatch(fetchLogin({userName,password})).then(data=>{
+            if(data.payload.code === 200)
+                    navigate('/')
+       })
         
     }
   return (

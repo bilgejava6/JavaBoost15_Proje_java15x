@@ -5,7 +5,9 @@ import {
 import {HomePage} from './page/Home'
 import Login from './page/Login/LoginPage'
 import Register from './page/Register/RegisterPage'
+import { XUseSelector } from './store'
 function RouterPage() {
+  const isLogin = XUseSelector(state=> state.auth.isAuth);
   return (
     <BrowserRouter
     future={{
@@ -13,7 +15,7 @@ function RouterPage() {
     }}
     >
         <Routes>
-            <Route path='/' element={<HomePage />} />
+            <Route path='/' element={isLogin ?  <HomePage /> : <Login />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
         </Routes>

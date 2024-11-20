@@ -1,23 +1,19 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { XDispatch } from '../../store';
+import { fetchRegister } from '../../store/feature/authSlice';
 
 function Register() {
-
+    const dispatch = useDispatch<XDispatch>();
     const [userName,setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
-    const [age, setAge] = useState(0);
+    const [email, setEmail] = useState('');
     const [isWrong, setIsWrong] = useState(false);
-    const [user, setUser] = useState({
-        'userName': '',
-        'password': '',
-        'rePassword': '',
-        'age': 0
-    });
+   
     const kaydet = ()=>{
-        setUser({
-            userName,password,rePassword,age
-        });
+        dispatch(fetchRegister({userName,password,rePassword,email}));
     }
 
   return (
@@ -48,7 +44,7 @@ function Register() {
                     
                 </div>
                 <div className="mb-3">
-                    <input onChange={evt=>{setAge(parseInt(evt.target.value))}} className='form-control' type="number" placeholder='yaş'/>
+                    <input onChange={evt=>{setEmail(evt.target.value)}} className='form-control' type="email" placeholder='email adres'/>
                 </div>
                 <div className="mb-3 d-grid">
                     <button onClick={kaydet} className='btn btn-secondary'>Yeni Üye</button>
