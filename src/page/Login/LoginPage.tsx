@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
+import './LoginPage.css'
+import { NavLink } from 'react-router-dom';
 function Login() {
 
     const [userName,setUserName]= useState('');
     const [password, setPassword] = useState('');
-    /**
-     * java class değişkenleri korumak için encapsulation
-     * private int userName;
-     * public getUserName();
-     * publis setUserName();
-     * 
-     */
     const [isEmpty,setIsEmpty] = useState(false);
     const [isUserEmpty, setIsUserEmpty] = useState(false);
     const [isPasswordEmpty, setIsPasswordEmpty] = useState(false)
@@ -46,12 +41,16 @@ function Login() {
         })
         
     }
-    console.log('login render');
   return (
     <div className='container'>
         <div className="row mt-4">
             <div className="col-3"></div>
             <div className="col-6">
+                <div className="mb-5 mt-5 text-center">
+                    <img src="/java15logo.jpg" width={150} height={150} style={{borderRadius: '100%'}} />
+                    <br />
+                    <label style={{fontSize: '22px', fontWeight: 'bolder'}} className='form-label'>Java15X Login</label>
+                </div>
                 {
                     isEmpty 
                     ? <div className='alert alert-warning' role='alert'>
@@ -85,9 +84,20 @@ function Login() {
                       </div>
                 }
                
-                <div className="mb-3">
-                    <button onClick={doLogin} className='btn btn-success'>Giriş</button>
+                <div className="mb-5">
+                    <div className="row">
+                        <div className="col d-grid">
+                            <button onClick={doLogin} className='btn btn-success'>Giriş</button>
+                        </div>
+                        <div className="col d-grid"> 
+                            <NavLink to={'/register'} className='btn btn-warning'>
+                                Üye ol
+                            </NavLink>
+                            </div>
+                    </div>
+                    
                 </div>
+
             </div>
             <div className="col-3"></div>
         </div>

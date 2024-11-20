@@ -1,11 +1,11 @@
 import React from 'react'
-import LeftMenuComponent from '../component/molecules/LeftMenuComponent'
+import LeftMenuComponent from '../../component/molecules/LeftMenuComponent'
 import './HomePage.css'
-import SearchInput from '../component/atoms/SearchInput'
-import FollowSuggestionList from '../component/molecules/FollowSuggestionList'
-import TrendList from '../component/molecules/TrendList'
-import NewPost from '../component/molecules/SharePost'
-import PostList from '../component/organisms/PostList'
+import SearchInput from '../../component/atoms/SearchInput'
+import FollowSuggestionList from '../../component/molecules/FollowSuggestionList'
+import TrendList from '../../component/molecules/TrendList'
+import NewPost from '../../component/molecules/SharePost'
+import PostList from '../../component/organisms/PostList'
 function HomePage() {
   return (
     <div className="container">

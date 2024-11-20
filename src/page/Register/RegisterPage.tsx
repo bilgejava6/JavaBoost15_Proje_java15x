@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
-function Odev2() {
+function Register() {
 
     const [userName,setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -51,16 +52,10 @@ function Odev2() {
                 </div>
                 <div className="mb-3 d-grid">
                     <button onClick={kaydet} className='btn btn-secondary'>Yeni Üye</button>
-                </div>
-                <div>
-                <label>userName...: {user.userName} </label>                    
-                </div>
-                <div>
-                <label>password...: {user.password} </label>                    
-                </div>
-                <div>
-                <label>age...: {user.age}</label>                    
-                </div>
+                </div>   
+                <div className="mb-3 d-grid">
+                    <NavLink to={'/login'} className='btn btn-success'>Giriş yap</NavLink>
+                </div>                
                 
             </div>
             <div className="col-5"></div>
@@ -69,4 +64,4 @@ function Odev2() {
   )
 }
 
-export default Odev2
+export default Register
