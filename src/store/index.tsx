@@ -1,16 +1,14 @@
-
 import { configureStore } from "@reduxjs/toolkit";
-
 import {
-    authSlice, userSlice
+    authSlice, userSlice, postSlice
 } from './feature'
 import { useSelector } from "react-redux";
-
 
 const store = configureStore({
     reducer:  {
         auth: authSlice,
-        user: userSlice
+        user: userSlice,
+        post: postSlice
     }
 })
 export type XDispatch = typeof store.dispatch;
