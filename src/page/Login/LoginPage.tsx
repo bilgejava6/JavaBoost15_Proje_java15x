@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { XDispatch } from '../../store';
 import { fetchLogin } from '../../store/feature/authSlice';
 function Login() {
+    document.body.style.backgroundColor = 'white';
     const dispatch = useDispatch<XDispatch>();
     const navigate = useNavigate();
     const [userName,setUserName]= useState('');

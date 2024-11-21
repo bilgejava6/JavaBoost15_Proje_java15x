@@ -1,10 +1,14 @@
 import React from 'react'
 import LeftButtons from '../atoms/LeftButtons'
+import ProfileSettings from '../atoms/ProfileSettings'
 
 function LeftMenuComponent() {
   return (
-    <div className="row justify-content-end mt-5">
-        <div className="col-7">
+    <div className="row justify-content-end mt-1">
+        <div className="col-8 mt-1 mb-2">
+            <ProfileSettings />
+        </div>
+        <div className="col-8">
             <div className="row mb-2">
                 <LeftButtons iconType='Home' name='Anasayfa' path='/home' isActive={true} />
             </div>

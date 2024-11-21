@@ -7,6 +7,7 @@ import TrendList from '../../component/molecules/TrendList'
 import NewPost from '../../component/molecules/SharePost'
 import PostList from '../../component/organisms/PostList'
 function HomePage() {
+  document.body.style.backgroundColor = '#02131e';
   return (
     <div className="container">
       <div className="row" style={{minHeight: '200px'}}>
