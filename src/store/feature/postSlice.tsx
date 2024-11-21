@@ -12,7 +12,7 @@ const initialPostState = {
 }
 
 // fetch
-const fetchGetAllMyPosts= createAsyncThunk(
+export const fetchGetAllMyPosts= createAsyncThunk(
     'post/fetchGetAllMyPosts',
     async()=>{
       const token = localStorage.getItem('token');  
@@ -20,7 +20,7 @@ const fetchGetAllMyPosts= createAsyncThunk(
     }
 )
 
-const fetchGetAllPosts= createAsyncThunk(
+export const fetchGetAllPosts= createAsyncThunk(
     'post/fetchGetAllPosts',
     async()=>{
         const token = localStorage.getItem('token'); 
@@ -28,7 +28,7 @@ const fetchGetAllPosts= createAsyncThunk(
     }
 )
 
-const fetchNewPost= createAsyncThunk(
+export const fetchNewPost= createAsyncThunk(
     'post/fetchNewPost',
     async(payload: INewPostRequest)=>{       
       return await  fetch(apis.postService+'/new-post',{
