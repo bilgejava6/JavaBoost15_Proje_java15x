@@ -5,6 +5,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { XDispatch } from '../../store';
 import { fetchLogin } from '../../store/feature/authSlice';
+import { fetchGetProfileByToken } from '../../store/feature/userSlice';
 function Login() {
     document.body.style.backgroundColor = 'white';
     const dispatch = useDispatch<XDispatch>();
@@ -25,8 +26,11 @@ function Login() {
             setIsEmpty(false);
         
        dispatch(fetchLogin({userName,password})).then(data=>{
-            if(data.payload.code === 200)
-                    navigate('/')
+            if(data.payload.code === 200){
+                dispatch(fetchGetProfileByToken())
+                navigate('/')
+            }
+                    
        })
         
     }

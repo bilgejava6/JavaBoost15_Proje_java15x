@@ -8,6 +8,7 @@ import Register from './page/Register/RegisterPage'
 import { XDispatch, XUseSelector } from './store'
 import { useDispatch } from 'react-redux'
 import { userLogin } from './store/feature/authSlice'
+import { fetchGetProfileByToken } from './store/feature/userSlice'
 function RouterPage() {
   const dispatch = useDispatch<XDispatch>();
   const isLogin = XUseSelector(state=> state.auth.isAuth);
@@ -20,8 +21,10 @@ function RouterPage() {
    */
   useEffect(()=>{
     const token =  localStorage.getItem('token');
-    if(token)
+    if(token){
       dispatch(userLogin())
+      dispatch(fetchGetProfileByToken())
+    }
   },[]);
   return (
     <BrowserRouter

@@ -6,7 +6,7 @@ const server = devUrl;
 
 const apis = {
     authService: server+ '/user',
-    userSservice: server+ '/user',
+    userService: server+ '/user',
     postService: server+'/post'
 }
 
