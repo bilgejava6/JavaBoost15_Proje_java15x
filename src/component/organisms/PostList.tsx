@@ -25,6 +25,7 @@ function PostList() {
                 likeCount={post.likeCount}
                 reteweetCount={0}
                 viewsCount={post.viewCount}
+                isLike= {post.isLike}                
                 />
         })
       }

@@ -16,13 +16,14 @@ interface IPostProps{
     commentCount: number,
     reteweetCount: number,
     likeCount: number,
-    viewsCount: number
+    viewsCount: number,
+    isLike: boolean
 }
 function Post(props: IPostProps) {
     const {
         userAvatar,userName,name,isPremium,sharedTime,
         userId,comment,postImageUrl,postId,commentCount,reteweetCount,
-        likeCount,viewsCount
+        likeCount,viewsCount, isLike
     } = props;
   return (
     <div className="row x-post-body">
@@ -49,7 +50,7 @@ function Post(props: IPostProps) {
                         <PostIcons postId={postId} type='Retweet' count={reteweetCount}/>
                     </div>
                     <div className="col-3">
-                        <PostIcons postId={postId} type='Like' count={likeCount}/>
+                        <PostIcons postId={postId} type='Like' count={likeCount} isLike={isLike}/>
                     </div>
                     <div className="col-3">
                         <PostIcons postId={postId} type='Views' count={viewsCount}/>

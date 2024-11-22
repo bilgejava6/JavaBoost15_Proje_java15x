@@ -19,7 +19,7 @@ function PostIcons(props: IPostIconsProps) {
         switch(type){
             case 'Comment': return <i className="fa-regular fa-comment fa-sm m-1" style={onFocus? {color: '#1da1f2'}: {color: 'white'}}></i>;
             case 'Retweet': return <i className="fa-solid fa-retweet"  style={onFocus? {color: '#1da1f2'}: {color: 'white'}}></i>;
-            case 'Like': return <i className="fa-solid fa-heart"  style={onFocus? {color: '#1da1f2'}: {color: 'white'}}></i>;
+            case 'Like': return <i className="fa-solid fa-heart"  style={onFocus || isLike? {color: '#1da1f2'}: {color: 'white'}}></i>;
             case 'Views': return <i className="fa-solid fa-chart-simple"  style={onFocus? {color: '#1da1f2'}: {color: 'white'}}></i>;
             default: return null;
         }
@@ -29,7 +29,7 @@ function PostIcons(props: IPostIconsProps) {
     const onLike = ()=>{
         if(isLike){ // eğer like undefined değil ve true ise
                // unlike 
-               dispatch(fetchUnLike(postId)).then(data=>{
+            dispatch(fetchUnLike(postId)).then(data=>{
                 dispatch(fetchGetAllPosts());
                })
         }else{

@@ -8,5 +8,6 @@ export interface IPostResponse{
     date: number,
     commentCount: number,
     likeCount: number,
-    viewCount: number
+    viewCount: number,
+    isLike: boolean
 }
