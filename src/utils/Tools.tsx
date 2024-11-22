@@ -2,8 +2,9 @@
 export const getFormattedElapsedTime = (serverTimestamp: number): string => {
     const now = new Date().getTime();
     const elapsedTimeInMilliseconds = now - serverTimestamp;
-  
-    if (elapsedTimeInMilliseconds < 60000) { // 1 dakika
+    if(elapsedTimeInMilliseconds<2000)
+      return 'az önce';
+    else if (elapsedTimeInMilliseconds < 60000) { // 1 dakika
       return `${Math.floor(elapsedTimeInMilliseconds / 1000)} saniye önce`;
     } else if (elapsedTimeInMilliseconds < 3600000) { // 1 saat
       return `${Math.floor(elapsedTimeInMilliseconds / 60000)} dakika önce`;
