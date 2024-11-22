@@ -1,5 +1,6 @@
 import React from 'react'
 import './PostTitle.css'
+import { getFormattedElapsedTime } from '../../utils/Tools';
 interface IPostTitleProps{
     name: string,
     isPremium: boolean,
@@ -8,6 +9,9 @@ interface IPostTitleProps{
 }
 function PostTitle(props: IPostTitleProps) {
     const {name,userName,isPremium,sharedTime} = props;
+    const getTime = ()=>{
+        return getFormattedElapsedTime(sharedTime);
+    }
   return (
     <div>
         <div className="row">
@@ -21,7 +25,7 @@ function PostTitle(props: IPostTitleProps) {
                 }               
                  <span className='x-post-title-user-name'>@{userName}</span>
                 <span  className='x-post-title-point'> . </span>
-                <span  className='x-post-title-date'>{sharedTime}</span>
+                <span  className='x-post-title-date'>{getTime()}</span>
             </div>            
         </div>
     </div>

@@ -3,7 +3,7 @@ import './PostIcons.css'
 interface IPostIconsProps{
     type: 'Comment' | 'Retweet' | 'Like' | 'Views',
     count: number,
-    postId: string
+    postId: number
 }
 function PostIcons(props: IPostIconsProps) {
     const {type,count,postId} = props

@@ -2,8 +2,14 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import apis from "../../config/RestApis"
 import { INewPostRequest } from "../../models/INewPostRequest";
 import { IBaseResponse } from "../../models/IBaseResponse";
-
-const initialPostState = {
+interface IPostState{
+    postList: IPostResponse[],
+    isLoadingPostList: boolean,
+    myPostList: IPostResponse[],
+    isLoadingMyPostList: boolean,
+    isNewPostLoading: boolean
+}
+const initialPostState: IPostState = {
     postList: [],
     isLoadingPostList: false,
     myPostList: [],

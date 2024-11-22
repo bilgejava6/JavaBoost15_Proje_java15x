@@ -3,7 +3,7 @@ import './SharePost.css'
 import UserAvatar from '../atoms/UserAvatar'
 import { useDispatch } from 'react-redux';
 import { XDispatch } from '../../store';
-import { fetchNewPost } from '../../store/feature/postSlice';
+import { fetchGetAllPosts, fetchNewPost } from '../../store/feature/postSlice';
 import { INewPostRequest } from '../../models/INewPostRequest';
 import swal from 'sweetalert';
 function NewPost() {
@@ -18,6 +18,7 @@ function NewPost() {
     }
     dispatch(fetchNewPost(post)).then(data=>{
         setComment('');
+        dispatch(fetchGetAllPosts());
         swal('Baraşılı', 'Yeni post başarı ile paylaşıldı.', 'success');
     })
   }

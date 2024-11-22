@@ -3,6 +3,7 @@ import Post from '../molecules/Post'
 import { XDispatch, XUseSelector } from '../../store'
 import { useDispatch } from 'react-redux';
 import { fetchGetAllPosts } from '../../store/feature/postSlice';
+import { getFormattedElapsedTime } from '../../utils/Tools';
 
 function PostList() {
   const postList = XUseSelector(state => state.post.postList);
@@ -14,16 +15,16 @@ function PostList() {
   return (
     <div className="col">
       {
-        postList.map((post: any,index)=>{
-          return <Post userAvatar={post.avatar}
-                userId='1' userName={post.userName} name={post.name}
-                isPremium={true} sharedTime={19} comment={post.comment}
-                postImageUrl='https://picsum.photos/300/300'
-                postId='122'
-                commentCount={567}
-                likeCount={111}
-                reteweetCount={23}
-                viewsCount={9889}
+        postList.map((post,index)=>{
+          return <Post key={index} userAvatar={post.avatar}
+                userId={1} userName={post.userName} name={post.name}
+                isPremium={true} sharedTime={post.date} comment={post.comment}
+                postImageUrl={post.imageUrl}
+                postId= {post.id}
+                commentCount={post.commentCount}
+                likeCount={post.likeCount}
+                reteweetCount={0}
+                viewsCount={post.viewCount}
                 />
         })
       }
