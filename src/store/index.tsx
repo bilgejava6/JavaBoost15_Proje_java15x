@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
-    authSlice, userSlice, postSlice
+    authSlice, userSlice, postSlice, likeSlice
 } from './feature'
 import { useSelector } from "react-redux";
 
@@ -8,7 +8,8 @@ const store = configureStore({
     reducer:  {
         auth: authSlice,
         user: userSlice,
-        post: postSlice
+        post: postSlice,
+        like: likeSlice
     }
 })
 export type XDispatch = typeof store.dispatch;

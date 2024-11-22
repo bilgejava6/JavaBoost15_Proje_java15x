@@ -1,4 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import apis from "../../config/RestApis";
+import { IBaseResponse } from "../../models/IBaseResponse";
 
 interface ILikeState{
     isLikeLoading: boolean,
@@ -13,9 +15,9 @@ const initialLikeState: ILikeState = {
 // fetch
 export const fetchAddLike = createAsyncThunk(
     'like/fetchAddLike',
-    async (postId: string)=>{
+    async (postId: number)=>{
         const token = localStorage.getItem('token');
-        return await fetch('',{
+        return await fetch(apis.likeService+ '/add-like',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,9 +29,9 @@ export const fetchAddLike = createAsyncThunk(
 
 export const fetchUnLike = createAsyncThunk(
     'like/fetchUnLike',
-    async (postId:string)=>{
+    async (postId:number)=>{
         const token = localStorage.getItem('token');
-        return await fetch('',{
+        return await fetch(apis.likeService+ '/un-like',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +46,10 @@ const likeSlice = createSlice({
     initialState: initialLikeState,
     reducers: {},
     extraReducers: (build)=>{
-
+        build.addCase(fetchAddLike.pending,(state)=>{state.isLikeLoading = true;})
+        build.addCase(fetchAddLike.fulfilled,(state,action:PayloadAction<IBaseResponse>)=>{state.isLikeLoading = false})
+        build.addCase(fetchUnLike.pending,(state)=>{state.isUnLikeLoding = true})
+        build.addCase(fetchUnLike.fulfilled,(state,action:PayloadAction<IBaseResponse>)=>{state.isUnLikeLoding= false}) 
     }
 })
 

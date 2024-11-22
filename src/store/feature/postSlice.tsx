@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import apis from "../../config/RestApis"
 import { INewPostRequest } from "../../models/INewPostRequest";
 import { IBaseResponse } from "../../models/IBaseResponse";
+import { IPostResponse } from '../../models/IPostResponse'
 interface IPostState{
     postList: IPostResponse[],
     isLoadingPostList: boolean,
