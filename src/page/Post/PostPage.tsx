@@ -10,6 +10,7 @@ import { XDispatch, XUseSelector } from '../../store'
 import state from 'sweetalert/typings/modules/state'
 import { fetchPostGetById } from '../../store/feature/postSlice'
 import Post from '../../component/molecules/Post'
+import CommentPost from '../../component/molecules/CommentPost'
 
 function PostPage(props: any) {
     const dispatch = useDispatch<XDispatch>();
@@ -25,6 +26,11 @@ function PostPage(props: any) {
     const goToHomePage = ()=>{
         navigate('/');
     }
+    /**
+     * key: ''  empty
+     * key:     null
+     *          undefined 
+     */
     return (
       <div className="container">
         <div className="row" style={{minHeight: '200px'}}>
@@ -51,7 +57,7 @@ function PostPage(props: any) {
                 </div>
               </div>
               <div className="row">
-                 
+                 <CommentPost  postId={post?.id}/>
               </div>
           </div>
           <div className="col-4">
