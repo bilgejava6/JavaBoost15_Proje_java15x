@@ -3,7 +3,10 @@ import apis from "../../config/RestApis"
 import { INewPostRequest } from "../../models/INewPostRequest";
 import { IBaseResponse } from "../../models/IBaseResponse";
 import { IPostResponse } from '../../models/IPostResponse'
+import state from "sweetalert/typings/modules/state";
 interface IPostState{
+    post: IPostResponse | null,
+    isLodingPost: boolean,
     postList: IPostResponse[],
     isLoadingPostList: boolean,
     myPostList: IPostResponse[],
@@ -11,6 +14,8 @@ interface IPostState{
     isNewPostLoading: boolean
 }
 const initialPostState: IPostState = {
+    post: null,
+    isLodingPost: false,
     postList: [],
     isLoadingPostList: false,
     myPostList: [],
@@ -48,6 +53,18 @@ export const fetchNewPost= createAsyncThunk(
     }
 )
 
+export const fetchPostGetById = createAsyncThunk(
+    'post/fetchPostGetById',
+    async (postId: number)=>{
+        const token = localStorage.getItem('token');
+        const reqUrl = apis.postService+`/get-post-by-id?token=${token}&postId=${postId}`;
+        console.log('reqUrl...: ', reqUrl);
+        const response = await fetch(reqUrl)
+                    .then(data=>data.json())
+        return response;
+    }
+)
+
 const postSlice = createSlice({
     name: 'post',
     initialState: initialPostState,
@@ -74,7 +91,16 @@ const postSlice = createSlice({
         build.addCase(fetchNewPost.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
             state.isNewPostLoading = false
         })
-                
+        build.addCase(fetchPostGetById.pending,(state)=>{
+            state.isLodingPost= true;
+        })      
+        build.addCase(fetchPostGetById.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
+            state.isLodingPost = false;
+            if(action.payload.code === 200){
+                state.post = action.payload.data;
+            }
+        })      
+        
     }
 })
 
