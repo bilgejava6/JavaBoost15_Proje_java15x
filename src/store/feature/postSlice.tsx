@@ -67,7 +67,7 @@ const postSlice = createSlice({
             state.isLoadingPostList = false;
             if(action.payload.code === 200){
                 state.postList = action.payload.data;
-                console.log(action.payload.data)
+            
             }
         })
         build.addCase(fetchNewPost.pending,(state)=>{state.isNewPostLoading = true})

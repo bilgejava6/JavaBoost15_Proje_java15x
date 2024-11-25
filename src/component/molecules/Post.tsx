@@ -3,6 +3,7 @@ import './Post.css'
 import UserAvatar from '../atoms/UserAvatar'
 import PostTitle from '../atoms/PostTitle'
 import PostIcons from '../atoms/PostIcons'
+import { useNavigate } from 'react-router-dom'
 interface IPostProps{
     userAvatar: string,
     userName: string,
@@ -17,16 +18,21 @@ interface IPostProps{
     reteweetCount: number,
     likeCount: number,
     viewsCount: number,
-    isLike: boolean
+    isLike: boolean,
 }
 function Post(props: IPostProps) {
+    const navigate = useNavigate();
     const {
         userAvatar,userName,name,isPremium,sharedTime,
         userId,comment,postImageUrl,postId,commentCount,reteweetCount,
         likeCount,viewsCount, isLike
     } = props;
+
+    const goToPost = ()=>{        
+        navigate('/post/'+userName+'/'+postId)
+    }
   return (
-    <div className="row x-post-body">
+    <div className="row x-post-body" onClick={goToPost}>
         <div className="col-2 text-end">
             <UserAvatar userAvatarUrl={userAvatar}/>
         </div>

@@ -9,6 +9,7 @@ import { XDispatch, XUseSelector } from './store'
 import { useDispatch } from 'react-redux'
 import { userLogin } from './store/feature/authSlice'
 import { fetchGetProfileByToken } from './store/feature/userSlice'
+import PostPage from './page/Post/PostPage'
 function RouterPage() {
   const dispatch = useDispatch<XDispatch>();
   const isLogin = XUseSelector(state=> state.auth.isAuth);
@@ -36,6 +37,8 @@ function RouterPage() {
             <Route path='/' element={isLogin  ?  <HomePage /> : <Login />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/post/:userName/:postId' element={<PostPage />} />
+            
         </Routes>
     </BrowserRouter>
   )
